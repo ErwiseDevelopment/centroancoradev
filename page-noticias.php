@@ -54,17 +54,17 @@ get_header(); ?>
 
                             <!-- loop -->
                             <?php 
-     							$link_pattern = get_field( 'link_padrao_portal', 'option' );
-                                 $post_link = 'https://copiosaredencao.org.br/wp-json/wp/v2/posts?categories=48';//$link_pattern . get_field( 'link_caminho', 'option' ) . get_field( 'link_noticia', 'option' );
-                                 $request_posts = wp_remote_get( $post_link );
-                               
-         
-                                 if(!is_wp_error( $request_posts )) :
-                                     $body = wp_remote_retrieve_body( $request_posts );
-                                     $data = json_decode( $body );
-         
-                                     if(!is_wp_error( $data )) :
-                                         foreach( $data as $rest_post ) :
+     							  $link_pattern = get_field( 'link_padrao_portal', 'option' );
+                                   $post_link = $link_pattern . get_field( 'link_caminho', 'option' ) . get_field( 'link_noticia', 'option' );
+                                   $request_posts = wp_remote_get( $post_link );
+                                 
+           
+                                   if(!is_wp_error( $request_posts )) :
+                                       $body = wp_remote_retrieve_body( $request_posts );
+                                       $data = json_decode( $body );
+           
+                                       if(!is_wp_error( $data )) :
+                                           foreach( $data as $rest_post ) :
                             ?>
                                         <div class="col-lg-6 js-posts-new my-3">
 
@@ -73,8 +73,8 @@ get_header(); ?>
                                                 <div class="card-img w-100">
                                                     <img
                                                         class="l-post-highlight__thumbnail img-fluid w-100 u-object-fit-cover"
-                                                        src="<?php echo $data->featured_image_src; ?>"
-                                                        alt="<?php echo $data->title->rendered; ?>">
+                                                        src="<?php echo $rest_post->featured_image_src; ?>"
+                                                          alt="<?php echo $rest_post->title->rendered; ?>">
                                                 </div>
                                                     <div class="card-body px-4">
 
@@ -91,11 +91,11 @@ get_header(); ?>
                                                         </p>
 
                                                         <h4 class="u-font-size-16 xxl:u-font-size-20 u-font-weight-bold u-color-folk-bold-electric-blue mb-4">
-                                                            <?php echo $data->title->rendered; ?>
+                                                        <?php echo $rest_post->title->rendered; ?>
                                                         </h4>
 
                                                         <span class="d-block u-font-size-14 xxl:u-font-size-16 u-font-weight-regular u-color-folk-aluminium">
-                                                            <?php echo $data->content->rendered;  ?>
+                                                            <?php echo $rest_post->content->rendered;  ?>
                                                         </span>
 
                                                         <div class="row">
