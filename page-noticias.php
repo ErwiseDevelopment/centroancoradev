@@ -94,9 +94,9 @@ get_header(); ?>
                                                         <?php echo $rest_post->title->rendered; ?>
                                                         </h4>
 
-                                                        <span class="d-block u-font-size-14 xxl:u-font-size-16 u-font-weight-regular u-color-folk-aluminium">
-                                                            <?php echo $rest_post->content->rendered;  ?>
-                                                        </span>
+                                                        <!-- <span class="d-block u-font-size-14 xxl:u-font-size-16 u-font-weight-regular u-color-folk-aluminium">
+                                                            <php echo $rest_post->content->rendered;  ?>
+                                                        </span> -->
 
                                                         <div class="row">
 
