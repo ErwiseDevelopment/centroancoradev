@@ -66,51 +66,53 @@ get_header(); ?>
                                        if(!is_wp_error( $data )) :
                                            foreach( $data as $rest_post ) :
                             ?>
-                                        <div class="col-lg-6 js-posts-new my-3">
+                                        
+                                        <div class="col-md-4">
 
-                                            <div class="card rounded-0">
-                                                <a class="text-decoration-none " href="<?php echo get_home_url( null, 'noticia/?id=' . $rest_post->id )  ?>">
-                                                <div class="card-img w-100">
-                                                    <img
-                                                        class="l-post-highlight__thumbnail img-fluid w-100 u-object-fit-cover"
-                                                        src="<?php echo $rest_post->featured_image_src; ?>"
-                                                          alt="<?php echo $rest_post->title->rendered; ?>">
-                                                </div>
-                                                    <div class="card-body px-4">
+                                        <a 
+                                        class="card border-0 text-decoration-none"
+                                        href="<?php echo get_home_url( null, 'noticia/?id=' . $rest_post->id )  ?>">
 
-                                                        <p class="u-font-size-12 xxl:u-font-size-14 u-font-weight-semibold u-color-folk-medium-electric-blue mb-0">
-                                                        <?php 
+                                            <div class="l-news__card-img card-img">
+                                                <img
+                                                class=" img-fluid w-100 h-100 u-object-fit-cover"
+                                                src="<?php echo $rest_post->featured_image_src; ?>"
+                                                alt="<?php echo $rest_post->title->rendered; ?>">
+                                            </div>
+
+                                            <div class="card-body">
+                                                
+                                                <p class="u-font-size-14 u-font-weight-semibold u-color-folk-cyan-blue mb-0">
+                                                    <?php 
                                                         $data = $rest_post->post_date;
                                                         $data_format = get_date_format( $data );
 
                                                         echo $data_format;  
                                                     ?>
+                                                </p>
+
+                                                <h4 class="u-font-size-18 xxl:u-font-size-20 u-font-weight-bold u-color-folk-dark-grayish-navy">
+                                                    <?php echo $rest_post->title->rendered; ?>
+                                                </h4>
+
+                                                <p class="u-font-size-13 xxl:u-font-size-16 u-font-weight-regular u-color-folk-aluminium">
+                                                    <?php echo $rest_post->post_excerpt; ?>
+                                                </p>
+
+                                                <div class="row">
+
+                                                    <div class="col-6 mt-3">
+
+                                                        <p
+                                                        class="w-100 u-box-shadow-pattern u-font-size-12 u-font-weight-bold u-font-family-nunito text-center text-decoration-none u-color-folk-white u-bg-folk-dark-blue hover:u-bg-folk-golden py-2">
+                                                            Ler mais
                                                         </p>
-                                                        <h4 class="u-font-size-16 xxl:u-font-size-20 u-font-weight-bold u-color-folk-bold-electric-blue mb-4">
-                                                        <?php echo $rest_post->title->rendered; ?>
-                                                        </h4>
-
-                                                        <p class="u-font-size-12 xxl:u-font-size-14 u-font-weight-bold u-color-folk-medium-electric-blue">
-                                                        <?php echo $rest_post->post_excerpt; ?>
-                                                        </p>
-                                                        <!-- <span class="d-block u-font-size-14 xxl:u-font-size-16 u-font-weight-regular u-color-folk-aluminium">
-                                                            <php echo $rest_post->content->rendered;  ?>
-                                                        </span> -->
-
-                                                        <div class="row">
-
-                                                            <div class="col-5 mt-3">
-
-                                                                <span
-                                                                class="w-100 u-box-shadow-pattern position-absolute u-font-size-12 u-font-weight-bold u-font-family-nunito text-center u-color-folk-white u-bg-folk-golden hover:u-bg-folk-squid-ink js-read-more py-2">
-                                                                    Ler mais
-                                                                </span>
-                                                            </div>
-                                                        </div>
                                                     </div>
-											    </a>
+                                                </div>
                                             </div>
-                                        </div>
+                                        </a>  
+                                    </div>
+                                       
                                         <?php endforeach;
                                                         endif;
                                                             endif;?>
