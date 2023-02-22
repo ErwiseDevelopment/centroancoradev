@@ -79,21 +79,20 @@ get_header(); ?>
                                                     <div class="card-body px-4">
 
                                                         <p class="u-font-size-12 xxl:u-font-size-14 u-font-weight-semibold u-color-folk-medium-electric-blue mb-0">
-                                                            <?php $date_post = $data->date;
-                                                                list($data_year, $data_month, $data_day) = explode("-", $date_post);
-                                                                list($data_day1) = explode("T", $data_day);
-                                                                echo $data_day1 . '/' . $data_month . '/' . $data_year; 
-                                                            ?>
-                                                        </p>
+                                                        <?php 
+                                                        $data = $rest_post->post_date;
+                                                        $data_format = get_date_format( $data );
 
-                                                        <p class="u-font-size-12 xxl:u-font-size-14 u-font-weight-bold u-color-folk-medium-electric-blue">
-                                                        <?php echo $rest_post->post_excerpt; ?>
+                                                        echo $data_format;  
+                                                    ?>
                                                         </p>
-
                                                         <h4 class="u-font-size-16 xxl:u-font-size-20 u-font-weight-bold u-color-folk-bold-electric-blue mb-4">
                                                         <?php echo $rest_post->title->rendered; ?>
                                                         </h4>
 
+                                                        <p class="u-font-size-12 xxl:u-font-size-14 u-font-weight-bold u-color-folk-medium-electric-blue">
+                                                        <?php echo $rest_post->post_excerpt; ?>
+                                                        </p>
                                                         <!-- <span class="d-block u-font-size-14 xxl:u-font-size-16 u-font-weight-regular u-color-folk-aluminium">
                                                             <php echo $rest_post->content->rendered;  ?>
                                                         </span> -->
