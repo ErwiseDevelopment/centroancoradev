@@ -55,7 +55,7 @@ get_header(); ?>
                             <!-- loop -->
                             <?php 
      							$link_pattern = get_field( 'link_padrao_portal', 'option' );
-                                 $post_link = $link_pattern . get_field( 'link_caminho', 'option' ) . get_field( 'link_noticia', 'option' );
+                                 $post_link = 'https://copiosaredencao.org.br/wp-json/wp/v2/posts?categories=48';//$link_pattern . get_field( 'link_caminho', 'option' ) . get_field( 'link_noticia', 'option' );
                                  $request_posts = wp_remote_get( $post_link );
                                
          
@@ -72,8 +72,8 @@ get_header(); ?>
                                                 <a class="text-decoration-none " href="<?php echo get_home_url( null, 'noticia/?id=' . $rest_post->id )  ?>">
                                                 <div class="card-img w-100">
                                                     <img
-                                                    class="img-fluid w-100 u-object-fit-cover"
-                                                    src="<?php echo $data->featured_image_src; ?>"
+                                                        class="l-post-highlight__thumbnail img-fluid w-100 u-object-fit-cover"
+                                                        src="<?php echo $data->featured_image_src; ?>"
                                                         alt="<?php echo $data->title->rendered; ?>">
                                                 </div>
                                                     <div class="card-body px-4">
