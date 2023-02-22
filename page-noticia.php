@@ -109,24 +109,7 @@ get_header(); ?>
 
 					<div class="col-lg-3 mt-5 mt-lg-0">
 
-						<div>
-                            <form class="js-search-form" method="GET" action="/">
-
-                                <div class="row">
-
-                                    <div class="col-12">
-                                        <input
-                                        class="w-100 border-0 d-block u-font-size-14 u-font-weight-semibold u-color-folk-bold-eletric-blue u-bg-folk-light-gray py-4 pl-3 pr-5"
-                                        type="search"
-                                        name="s"
-                                        placeholder="Procurar">
-                                        <span class="l-page-news__icon js-search-submit"></span>
-                                    </div>
-                                </div>
-                            </form>                            
-                        </div>
-
-						<div class="row">
+					<div class="row">
 
                             <div class="col-12">
 
