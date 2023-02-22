@@ -87,7 +87,7 @@ get_header(); ?>
                                                         </p>
 
                                                         <p class="u-font-size-12 xxl:u-font-size-14 u-font-weight-bold u-color-folk-medium-electric-blue">
-                                                        
+                                                        <?php echo $rest_post->post_excerpt; ?>
                                                         </p>
 
                                                         <h4 class="u-font-size-16 xxl:u-font-size-20 u-font-weight-bold u-color-folk-bold-electric-blue mb-4">
