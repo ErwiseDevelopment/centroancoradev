@@ -14,11 +14,31 @@ get_header(); ?>
 
 <?php while ( have_posts() ) : the_post(); ?>
 
-<!-- banner -->a
+<!-- banner -->
 <?php
+
+if(empty($_GET['id'])) {
+    echo "<script>window.location.href='" . get_home_url(null, 'blogs') . "';</script>";
+    exit();
+}
+$request_posts = wp_remote_get($post_link);
+
+if (!is_wp_error($request_posts)) {
+    $response_code = wp_remote_retrieve_response_code($request_posts);
+
+    if ($response_code === 404) {
+        echo 'Post não encontrado';
+        exit();
+    }
+}
+$body = wp_remote_retrieve_body( $request_posts );
+$data = json_decode( $body );
+
+
     //pega o id da pagina/post
  if( isset($_GET['id']))
  $id_url = $_GET['id'];
+
 
     //url principal do site
      $link_pattern = get_field( 'link_padrao_portal', 'option' );
@@ -28,6 +48,17 @@ get_header(); ?>
 //	echo $post_link;
      //faz a requisição com o site no caminho digitado acima
      $request_posts = wp_remote_get( $post_link );
+	 if(!is_wp_error( $request_posts )) {
+        $response_code = wp_remote_retrieve_response_code($request_posts);
+
+		if (!is_wp_error($request_posts)) {
+			$response_code = wp_remote_retrieve_response_code($request_posts);
+			if ($response_code === 404) {
+				include '404.php'; // aqui você pode inserir o caminho do arquivo que deseja incluir
+				exit();
+			}
+		}
+	}
      if(!is_wp_error( $request_posts )) :
    $body = wp_remote_retrieve_body( $request_posts );
    $data = json_decode( $body );
@@ -36,6 +67,7 @@ get_header(); ?>
 // 	echo "</pre>";
    if(!is_wp_error( $data )) :
     //    foreach( $data as $rest_post ) :
+	
 ?>
 
 <section class="u-bg-folk-extrabold-electric-blue py-5">
@@ -45,10 +77,10 @@ get_header(); ?>
         <div class="row">
 
             <div class="col-12 my-5">
-
 			<h1 class="l-banner-full__title u-font-weight-bold text-center u-color-folk-white mb-4">
-                        Blogs
+                        Blog
                 </h1>
+
 
                 <div class="rounded u-bg-folk-golden mx-auto" style="width:320px;height:9px"></div>
             </div>
@@ -133,12 +165,13 @@ get_header(); ?>
 
                                                 if(!is_wp_error( $data )) :
                                                     foreach( $data as $rest_post ) :
-                                                        $count++;
+                                                        
                                                         if($id_url <> $rest_post->id) :
+															$count++;
 										?>
 													<a 
 													class="col-12 u-border-b-1 last-child:u-border-b-1 border-light d-block text-decoration-none my-3 pb-3"
-													href="<?php echo get_home_url( null, 'noticia/?id=' . $rest_post->id )  ?>">
+													href="<?php echo get_home_url( null, 'blog/?id=' . $rest_post->id )  ?>">
 
 														<div class="row">
 															
@@ -188,7 +221,6 @@ get_header(); ?>
 	</div>
 </section>
 <?php endwhile; ?>
-
 </div><!-- #main -->
 </section><!-- #primary -->
 
